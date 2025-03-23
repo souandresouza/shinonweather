@@ -1,0 +1,56 @@
+body {
+    font-family: 'Roboto', sans-serif; /* Use a fonte Roboto para um visual moderno */
+    background-color: #e0e0e0; /* Cor de fundo mais suave */
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#weather-container {
+    text-align: center;
+    padding: 2em; /* Usar em para padding relativo */
+    background-color: #ffffff;
+    border-radius: 0.75em; /* Bordas mais arredondadas usando em */
+    box-shadow: 0 0.25em 1.25em rgba(0, 0, 0, 0.1); /* Sombra mais suave e profunda usando em */
+    max-width: 25em; /* Limitar a largura máxima usando em */
+}
+
+button {
+    background-color: #4CAF50; /* Cor verde para um visual mais fresco */
+    color: #fff;
+    border: none;
+    padding: 0.75em 1.5em; /* Usar em para padding relativo */
+    border-radius: 0.375em; /* Bordas mais arredondadas usando em */
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Transição suave para hover */
+}
+
+button:hover {
+    background-color: #45a049; /* Cor de hover mais escura */
+}
+
+#weather-info {
+    margin-top: 1.25em; /* Espaço entre o botão e as informações do tempo usando em */
+    font-size: 1em; /* Tamanho de fonte usando em para melhor legibilidade */
+    line-height: 1.5; /* Espaçamento entre linhas para melhor legibilidade */
+}
+
+/* Media query for high-resolution screens */
+@media (min-width: 1080px) and (min-height: 2400px) {
+    #weather-container {
+        padding: 2.5em; /* Ajustar o padding para telas maiores usando em */
+        max-width: 31.25em; /* Ajustar a largura máxima para melhor visualização usando em */
+    }
+
+    button {
+        padding: 0.875em 1.75em; /* Ajustar o tamanho do botão para telas maiores usando em */
+    }
+
+    #weather-info {
+        font-size: 1.125em; /* Aumentar o tamanho da fonte para melhor legibilidade usando em */
+    }
+}
