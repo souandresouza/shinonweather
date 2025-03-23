@@ -36,14 +36,24 @@ function fetchWeather(latitude, longitude) {
     const locationUrl = `http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=${accuweatherToken}&q=${latitude},${longitude}`;
 
     fetch(locationUrl)
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Network response was not ok: ${response.statusText}`);
+            }
+            return response.json();
+        })
         .then(data => {
             const locationKey = data.Key;
             const weatherUrl = `http://dataservice.accuweather.com/currentconditions/v1/${locationKey}?apikey=${accuweatherToken}&details=true`;
 
             return fetch(weatherUrl);
         })
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Network response was not ok: ${response.statusText}`);
+            }
+            return response.json();
+        })
         .then(weatherData => {
             const weatherInfo = weatherData[0];
             const temp = weatherInfo.Temperature.Metric.Value;
@@ -67,7 +77,7 @@ function fetchWeather(latitude, longitude) {
         })
         .catch(error => {
             console.error('Error fetching weather data:', error);
-            alert('Failed to retrieve weather data.');
+            alert(`Failed to retrieve weather data: ${error.message}`);
         });
 }
 
