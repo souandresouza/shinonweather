@@ -1,10 +1,34 @@
 document.getElementById('get-location').addEventListener('click', function() {
-    if (navigator.geolocation) {
+    const cityName = document.getElementById('city-name').value.trim();
+    const postalCode = document.getElementById('postal-code').value.trim();
+
+    if (cityName || postalCode) {
+        // Save city name or postal code in localStorage
+        if (cityName) {
+            localStorage.setItem('cityName', cityName);
+            fetchWeatherByCityName(cityName);
+        } else if (postalCode) {
+            localStorage.setItem('postalCode', postalCode);
+            fetchWeatherByPostalCode(postalCode);
+        }
+    } else if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition, showError);
     } else {
         alert("Geolocation is not supported by this browser.");
     }
 });
+
+// Function to fetch weather by city name
+function fetchWeatherByCityName(cityName) {
+    // Implement API call using city name
+    console.log(`Fetching weather for city: ${cityName}`);
+}
+
+// Function to fetch weather by postal code
+function fetchWeatherByPostalCode(postalCode) {
+    // Implement API call using postal code
+    console.log(`Fetching weather for postal code: ${postalCode}`);
+}
 
 function showPosition(position) {
     const latitude = position.coords.latitude;
